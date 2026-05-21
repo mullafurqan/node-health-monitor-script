@@ -1,106 +1,184 @@
-# Node Health Monitor Script
+# Linux Node Health Monitoring Script
 
-A simple Node.js-based health monitoring script that checks system health information such as CPU usage, memory usage, uptime, and system status.
+A simple Bash script to monitor the health and performance of a Linux system.
 
----
+This script displays:
+- Disk usage
+- Memory usage
+- Running processes
+- CPU information
+- Active process IDs
 
-## Features
-
-- Monitor CPU usage
-- Monitor Memory/RAM usage
-- Display System Uptime
-- Lightweight and beginner-friendly
-- Useful for DevOps and Linux monitoring practice
-
----
-
-## Technologies Used
-
-- Node.js
-- JavaScript
-- OS Module
+It is useful for beginners learning:
+- Linux Administration
+- Shell Scripting
+- DevOps Monitoring Basics
 
 ---
 
-## Project Structure
+# Features
+
+- Displays disk space usage
+- Displays RAM usage
+- Shows running system processes
+- Displays CPU core count
+- Extracts process IDs using `awk`
+- Includes debugging and error handling options
+
+---
+
+# Technologies Used
+
+- Bash Shell Scripting
+- Linux Commands
+- awk
+- grep
+
+---
+
+# Script Used
 
 ```bash
-node-health-monitor-script/
-│
-├── healthMonitor.js
-├── package.json
-└── README.md
+#!/bin/bash
+
+#############################################
+# Author: Furqan
+# Date: 21-05-2026
+#
+# This script provides the health of the node
+#############################################
+
+# Exit script if error occurs
+set -e
+
+# Enable debug mode
+set -x
+
+# Exit if pipeline error occurs
+set -o pipefail
+
+# Display disk usage in human-readable format
+df -h
+
+# Display memory usage in GB
+free -g
+
+# Display running processes
+top
+
+# Display number of CPU cores
+nproc
+
+# Display running process IDs
+ps -ef | grep usr | awk '{print $2}'
 ```
 
 ---
 
-## Installation
+# Installation
 
-### Clone the repository
+## Clone the repository
 
 ```bash
 git clone https://github.com/mullafurqan/node-health-monitor-script.git
 ```
 
-### Navigate to the project directory
+## Navigate to project directory
 
 ```bash
 cd node-health-monitor-script
 ```
 
-### Install dependencies
+## Give execute permission
 
 ```bash
-npm install
+chmod +x health.sh
 ```
 
 ---
 
-## Usage
+# Usage
 
 Run the script using:
 
 ```bash
-node healthMonitor.js
+./health.sh
 ```
 
----
-
-## Example Output
+or
 
 ```bash
-System Health Report
----------------------
-CPU Usage: 23%
-Memory Usage: 58%
-Free Memory: 2 GB
-System Uptime: 5 hours
+bash health.sh
 ```
 
 ---
 
-## Learning Objectives
+# Commands Explained
 
-This project helps in understanding:
-
-- Node.js basics
-- Working with system-level information
-- DevOps monitoring concepts
-- Linux server monitoring fundamentals
+| Command | Purpose |
+|---|---|
+| `df -h` | Shows disk usage |
+| `free -g` | Shows memory usage in GB |
+| `top` | Displays running processes |
+| `nproc` | Shows number of CPU cores |
+| `ps -ef` | Lists all processes |
+| `awk '{print $2}'` | Prints process IDs |
 
 ---
 
-## Future Improvements
+# Debugging Options Used
 
-- Add disk usage monitoring
+## `set -e`
+
+Exits the script immediately if any command fails.
+
+## `set -x`
+
+Displays each command before execution (debug mode).
+
+## `set -o pipefail`
+
+Stops script execution if any command in a pipeline fails.
+
+---
+
+# Example Output
+
+```bash
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        50G   20G   28G  42% /
+
+              total   used   free
+Mem:             15      6      3
+
+CPU(s): 4
+```
+
+---
+
+# Learning Objectives
+
+This project helps in learning:
+
+- Linux commands
+- Shell scripting basics
+- Process monitoring
+- System resource monitoring
+- DevOps fundamentals
+
+---
+
+# Future Improvements
+
+- Add CPU usage percentage
 - Add email alerts
-- Add logging support
-- Add real-time dashboard
-- Dockerize the application
+- Add logging functionality
+- Add disk usage alerts
+- Schedule using cron jobs
 
 ---
 
-## Author
+# Author
 
 Furqan Mulla
 
@@ -109,12 +187,12 @@ https://github.com/mullafurqan
 
 ---
 
-## Repository Link
+# Repository Link
 
 https://github.com/mullafurqan/node-health-monitor-script
 
 ---
 
-## License
+# License
 
 This project is licensed under the MIT License.
