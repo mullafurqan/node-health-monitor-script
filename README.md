@@ -187,12 +187,4 @@ https://github.com/mullafurqan
 
 ---
 
-# Repository Link
 
-https://github.com/mullafurqan/node-health-monitor-script
-
----
-
-# License
-
-This project is licensed under the MIT License.
