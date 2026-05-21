@@ -92,23 +92,27 @@ cd node-health-monitor-script
 ## Give execute permission
 
 ```bash
-chmod +x health.sh
+chmod +x node-health-monitor.sh
 ```
 
----
+or
+
+```bash
+chmod 777 node-health-monitor.sh
+```
 
 # Usage
 
 Run the script using:
 
 ```bash
-./health.sh
+./node-health-monitor.sh
 ```
 
 or
 
 ```bash
-bash health.sh
+sh node-health-monitor.sh
 ```
 
 ---
